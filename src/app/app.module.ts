@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,App } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -30,9 +30,26 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
     HomePage,
     TabsPage
   ],
+  
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{ tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp,{
+       tabsHideOnSubPages: true,
+       tabsPlacement: 'top',
+       platforms: {
+        ios: {
+          tabsPlacement: 'bottom',
+          mode: 'md',
+        },
+        android:
+        {
+
+        }
+      }
+      
+      
+      },
+      ),
     IonicStorageModule.forRoot(),
    
     HttpModule
