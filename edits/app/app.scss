@@ -1,0 +1,77 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// .tabs-md .tab-button[aria-selected=true] {
+//     background-color: #ff48ad !important;;
+//     padding: 0;
+// }
+// .tabs .tab-button[aria-selected=true] {
+    
+//   color: rgba(231, 3, 3, 0.7) !important; 
+     
+//  }
+.img_ctegory
+{
+  [alt="logo"]{
+    width: 100px;
+    float: right;
+    margin-left: 5%;
+    margin-top: 2%;
+    padding-bottom: 12px
+}
+}
+.cart-category{
+  float: left !important;
+  font-size: 2em !important;
+  padding-top: .2em !important;
+}
+.back-button.show-back-button {
+  display: none !important;
+}
+
+.cart-category{
+  animation: mirror infinite alternate-reverse 1s linear
+}
+
+@keyframes mirror{
+  0%{
+    transform: scale(1.2);
+    text-shadow: 3px 3px 5px #333
+  }
+  100%{
+    transform: scale(1.1);
+    text-shadow: 3px 3px 5px transparent
+  }
+}
+
+ .alert-radio-icon {
+  left: -14px !important;
+}
+ .tabs .tab-button{
+  background-color: #fff !important
+}
+.list > .item-block:first-child {
+border-top:none !important  ; 
+}
+.tabs .tab-button[aria-selected=true]{
+  color: #36332f !important;
+  border-bottom: 1px solid #eca436;
+ 
+}
+
+.tabs .tab-button[aria-selected=true] .tab-button-icon{
+  color: #eca436
+}

@@ -1,0 +1,87 @@
+page-modal {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;    
+    
+    [alt="logo"]{
+        width: 100px;
+        float: right;
+        margin-left: 5%;
+        margin-top: 2%;
+        padding-bottom: 12px
+    }
+   
+    ion-content ion-card ion-card-content{
+        text-align: center
+    }
+
+    ion-content ion-card ion-card-title{
+        color: #333 !important;
+        font-size: 20px !important
+    }
+
+    ion-content ion-card ion-card-content p{
+        color: gray !important;
+        font-size: 12px !important
+    }
+
+    ion-content .adding{
+        text-align: center !important;
+        padding-left: 50px
+    }
+
+    ion-content .adding button{
+        color:#fff !important;
+        font-weight: 800;
+        border-radius: 50%;
+        box-shadow: 0 0 5px 3px #ddd;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        line-height: 30px
+    }
+
+    ion-content .adding .count{
+        font-size: 20px;
+        position: relative;
+        top: 8px;
+        margin-right: 10px;
+        margin-left: 10px
+    }
+
+    ion-footer ion-toolbar ion-title ion-icon{
+        color: #fff !important;
+        font-size: 30px       
+    }
+
+    ion-footer span{
+        color: #fff;
+        font-size: 12px !important;
+        margin-right: 20%
+    }
+
+    .toolbar-md{
+        height: 50px
+    }
+
+    .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+        bottom: 0 !important;
+        border: 0 !important
+    }
+
+    [name="logo-facebook"]{
+        color: #3b5998;
+        padding-top: 10px !important
+    }
+
+    [name="logo-linkedin"]{
+        color: #3b5998 
+    }
+
+    [name="logo-youtube"]{
+        color: #ff0000 
+    }
+
+    alert-md .alert-radio-icon {
+        left: -14px !important;
+    }
+}

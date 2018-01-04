@@ -1,0 +1,8 @@
+{
+    "cate": [
+      {"name": "سمك مقلى " ,"id":1,"price":20,"s":"جنيه","des":"طماطم, ريحان, فلفل, ملح ","img":"assets/imgs/soup_item.png"},
+      {"name": "فراخ " ,"id":2,"price":30,"s":"جنيه","des":"طماطم, ريحان, فلفل, ملح ","img":"assets/imgs/2.jpg"},
+      {"name": "فراخ بانيه  " ,"id":3,"s":"جنيه","price":40,"des":"طماطم, ريحان, فلفل, ملح ","img":"assets/imgs/3.png"},
+      {"name": "كباب " ,"id":4,"price":50,"s":"جنيه","des":"طماطم, ريحان, فلفل, ملح ","img":"assets/imgs/4.jpg"}
+    ]
+  }

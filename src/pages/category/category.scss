@@ -1,0 +1,83 @@
+page-cateogry {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;    
+    
+    [alt="logo"]{
+        width: 100px;
+        float: right;
+        margin-left: 5%;
+        margin-top: 2%;
+        padding-bottom: 12px
+    }
+
+    
+
+    ion-content ion-item{
+        padding-right: 0 !important
+    }
+
+    .label-md {
+        margin: 0
+    }
+
+    ion-content ion-item  ion-thumbnail{
+        border-left: 1px solid #ddd;
+        padding-left: 10px;
+        padding-bottom: 15px
+    }
+
+    ion-content ion-item h2{
+        padding-top: 10px
+    }
+
+    ion-content ion-item h6{
+        font-size: 12px !important;
+        color: rgba(255, 0, 0, 0.657)
+    }
+
+    ion-content ion-item p{
+        font-size: 12px !important;
+        margin-top: 10px !important
+    }
+
+    ion-content button{
+        margin: 0 auto !important;
+        display: block !important;
+        padding: 3px 50px !important
+    }
+
+    ion-footer ion-toolbar ion-title ion-icon{
+        color: #fff !important;
+        font-size: 30px;
+        margin-right :10px !important        
+    }
+
+    ion-footer span{
+        color: #fff;
+        font-size: 12px !important;
+        margin-right: 20%
+    }
+
+    .toolbar-md{
+        height: 50px
+    }
+
+    // .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+    //     bottom: 0 !important;
+    //     border: 0 !important
+    // }
+
+    // [name="logo-facebook"]{
+    //     color: #3b5998;
+    //     padding-top: 10px !important
+    // }
+
+    // [name="logo-linkedin"]{
+    //     color: #3b5998 
+    // }
+
+    // [name="logo-youtube"]{
+    //     color: #ff0000 
+    // }
+}

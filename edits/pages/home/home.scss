@@ -1,0 +1,41 @@
+page-home {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;    
+    [alt="logo"]{
+        width: 100px;
+        float: right;
+        margin-left: 5%;
+        margin-top: 2%;
+        padding-bottom: 12px
+    }
+
+    ion-list{
+        border-bottom: 1px solid rgba(221, 221, 221, 0.548) !important
+    }
+
+    ion-list button{
+        color: #e30613 !important;
+        font-size: 20px !important
+    }
+
+    [name="arrow-dropleft"]{
+        color: #ddd ;
+        font-size: 40px
+    }
+
+    ion-list button:hover{
+        background-color: #eca436 !important;
+        color: #fff !important
+    }
+
+    ion-footer ion-toolbar ion-title ion-icon{
+        color: #fff !important;
+        font-size: 30px;
+        margin-right :10px !important        
+    }
+
+    .toolbar-md{
+        height: 50px
+    }
+
+}

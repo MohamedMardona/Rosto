@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar color="main">
+      <ion-title>
+        <img src="assets/imgs/logo.png" alt="logo">
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list> 
+    <ion-list-header></ion-list-header>
+   <ion-item *ngFor="let item of items  ">
+        <ion-list>
+            <ion-item> 
+              <ion-thumbnail item-start>
+                <img src="{{item.img}}" alt="map">
+            
+               </ion-thumbnail> 
+              <h2>{{item.name}}</h2>
+              <p>{{item.add}}</p>
+              <p (click)="call(item.mobile)">
+                  <ion-icon name="call" (click)="call(item.mobile)" ></ion-icon>
+                 {{item.mobile}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-item> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <ion-item>
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                  <img src="assets/imgs/map.png" alt="map">
+              </ion-thumbnail>
+              <h2>فرع المعادى</h2>
+              <p>العنوان بالتفصيل</p>
+              <p>
+                <ion-icon name="call"></ion-icon>
+                012345678900
+              </p>
+              <button ion-button clear item-end>عرض</button>
+            </ion-item>
+        </ion-list>
+    </ion-item>
+
+    <ion-item>
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                  <img src="assets/imgs/map.png" alt="map">
+              </ion-thumbnail>
+              <h2>فرع المعادى</h2>
+              <p>العنوان بالتفصيل</p>
+              <p>
+                  <ion-icon name="call"></ion-icon>
+                  012345678900
+                </p>
+              <button ion-button clear item-end>عرض</button>
+            </ion-item>
+        </ion-list>
+    </ion-item>
+
+    <ion-item>
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                  <img src="assets/imgs/map.png" alt="map">
+              </ion-thumbnail>
+              <h2>فرع المعادى</h2>
+              <p>العنوان بالتفصيل</p>
+              <p>
+                  <ion-icon name="call"></ion-icon>
+                  012345678900
+                </p>
+              <button ion-button clear item-end>عرض</button>
+            </ion-item>
+        </ion-list>
+    </ion-item> -->
+  </ion-list>
+</ion-content>

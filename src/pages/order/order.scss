@@ -1,0 +1,68 @@
+page-order {
+
+
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;    
+    
+    [alt="logo"]{
+        width: 100px;
+        float: right;
+        margin-left: 5%;
+        margin-top: 2%;
+        padding-bottom: 12px
+    }
+
+    .cost ion-list .items{
+        list-style: none;
+        overflow: hidden;
+        padding: 0
+    }
+
+    .cost ion-list .items li{
+        float: right
+    }
+
+    .cost ion-list .items li:first-child{
+        float: right;
+        color: #eca436
+    }
+
+    .cost ion-list .items li:last-child{
+        float: left;
+        color: #e30613
+    }
+
+    ion-footer ion-toolbar ion-title ion-icon{
+        color: #fff !important;
+        font-size: 30px       
+    }
+
+    .toolbar-md{
+        height: 50px
+    }
+
+    // .cart-order {
+    //     padding-left: 0px;
+    //     padding-right: 2.5em;
+      
+    //     /* float: left !important; */
+    //     font-size: 4em !important;
+    //     padding-top: .2em !important;
+    //     color: #eca336;
+    // }
+    .cart-order {
+        width: 100%;
+        /* padding-left: 0px; */
+        /* padding-right: 2.5em; */
+        /* float: left !important; */
+        font-size: 4em !important;
+        padding-top: .2em !important;
+        color: #eca336;
+        text-align: center;
+    }
+
+    [name="call"]{
+        color: #ddd;
+        padding-right: 20px
+    }
+}
