@@ -12,19 +12,26 @@
    <ion-item *ngFor="let item of items  ">
         <ion-list>
             <ion-item  > 
-         
+                  
                   <!-- <ion-thumbnail item-start (click)="openModal(item)">
                       <img src="{{item.img}}" alt="map">
-                  
+                  this.arraynumber
                      </ion-thumbnail>  -->
                     <h2 >{{item.name}}</h2>
-                    <p >{{item.add}}</p>
-                  
-           
-                <p (click)="call(item.mobile)">
-                    <ion-icon name="call" (click)="call(item.mobile)" ></ion-icon>
-                   {{item.mobile}}
+                    <div>
+ <p >{{item.address}}</p>
+
+                    </div>
+                   
+                    <ion-item *ngFor="let item2 of item.numbers  " >
+                       
+                           
+                <p (click)="call(item2.number)">
+                    <ion-icon name="call" (click)="call(item2.number)" ></ion-icon> 
+                   {{item2.number}}
                   </p> 
+                
+                 </ion-item>
                   <ion-icon  item-end (click)="openModal(item)" name="locate"></ion-icon>
                   <!-- <button ion-button clear item-end (click)="openModal(item)">عرض</button> -->
             </ion-item>

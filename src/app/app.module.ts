@@ -22,6 +22,16 @@ import { ServicesProvider } from '../providers/services/services';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 
+import { SuperTabsModule } from 'ionic2-super-tabs';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+
+
+import { Diagnostic } from '@ionic-native/diagnostic';
+
+
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -51,8 +61,9 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
       },
       ),
     IonicStorageModule.forRoot(),
-   
-    HttpModule
+    SuperTabsModule.forRoot(),
+
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +80,10 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
     NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicesProvider,
-    CallNumber
+    CallNumber,
+    NativePageTransitions,
+    Diagnostic,
+    OpenNativeSettings
   ]
 })
 export class AppModule {}

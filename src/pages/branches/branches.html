@@ -30,60 +30,36 @@
 
      
         <ion-item  *ngFor="let item of items" >
+            
           <ion-label   >
+           
            {{item.name}}
               <p>   {{item.address}}</p>
+       
               <h5  >
-                <ion-icon name="call"></ion-icon>
-                {{item.mobile}}
+                  <!-- <ion-item *ngFor="let item2 of item.numbers  ">
+                      
+                          <ion-icon name="call" (click)="call(item2.number)" ></ion-icon> 
+                         {{item2.number}}
+                        </ion-item>  -->
+                        <!-- {{i}} -->
+                
               </h5>
-          </ion-label>
-          <ion-radio (click)="goo(item.mobile)"  value="{{item.name}}" > </ion-radio>
+            
       
-    <!-- value="maadi" -->
-        <!-- <ion-list radio-group  [(ngModel)]="s" >
-            <ion-list-header>
-                Branches
-               </ion-list-header>
-          
-            <ion-item>
-              <ion-label >Cairo</ion-label>
-              <ion-radio   (click)="changeStatus('Cairo')" value="Cairo"></ion-radio>
-            </ion-item>
-          
-            <ion-item>
-              <ion-label>Giza</ion-label>
-              <ion-radio  (click)="changeStatus('Giza')" value="Giza"></ion-radio>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>assyut</ion-label>
-                <ion-radio  (click)="changeStatus('assyut')" value="assyut"></ion-radio>
-              </ion-item>
-            </ion-list> -->
-          
-          </ion-item>
-  
+   
+          </ion-label>
+      
+       <!-- <div > -->
+          <!-- <ion-item > -->
+          <ion-radio  (click)="goo(item.numbers)"  value="{{item.name}}" > </ion-radio>
+<!-- </ion-item> -->
+       <!-- </div> -->
          
+         
+ 
+      </ion-item>
         </ion-list>  
         <button ion-button full color="main" (click)="go()">إنهاء الطلب</button>
-            <!-- <button (click)="go()">fgfdgfdgfgg</button> -->
+         
 </ion-content>
-<!-- <ion-list radio-group (ionChange)="saveSettings()" [(ngModel)]="s">
-  <ion-list-header>
-      <ion-icon name="flag"></ion-icon>
-    اختر الفرع الاقرب لك ...
-  </ion-list-header>
-
-
-
-  <ion-item  *ngFor="let item of items" >
-    <ion-label  (click)="changeStatus(s)" >
-     {{item.name}}
-        <p>   {{item.address}}</p>
-        <h5>
-          <ion-icon name="call"></ion-icon>
-          {{item.mobile}}
-        </h5>
-    </ion-label>
-    <ion-radio  value="{{item.name}}" > </ion-radio> -->

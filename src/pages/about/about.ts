@@ -10,7 +10,7 @@ import {
  import { Storage } from '@ionic/storage';
  
  import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
- import { ModalOptions,Modal,IonicPage,  NavParams,ModalController,App } from 'ionic-angular';
+ import { AlertController,ModalOptions,Modal,IonicPage,  NavParams,ModalController,App } from 'ionic-angular';
  import { ServicesProvider } from '../../providers/services/services';
  import { CallNumber } from '@ionic-native/call-number';
  
@@ -27,7 +27,7 @@ export class AboutPage {
   lng
   myModal
   items
-  
+  arraynumber
   // options : GeolocationOptions;
   // currentPos : Geoposition;
 
@@ -38,15 +38,13 @@ export class AboutPage {
   // directionsService = new google.maps.DirectionsService;
   // directionsDisplay = new google.maps.DirectionsRenderer;
 
-  constructor(public storage:Storage,private callNumber: CallNumber,public loadingCtrl: LoadingController,public services:ServicesProvider,private modal: ModalController,public navCtrl: NavController,public nativeGeocoder: NativeGeocoder) {
+  constructor(public alertCtrl:AlertController,public storage:Storage,private callNumber: CallNumber,public loadingCtrl: LoadingController,public services:ServicesProvider,private modal: ModalController,public navCtrl: NavController,public nativeGeocoder: NativeGeocoder) {
     this.storage.set('products',[])
-    this.storage.set('counts',0)
+    this.storage.set('count',0)
   }
 
-  ionViewDidLoad(){
-    this.getdata();
-    // this.initMap();
-   
+  ionViewDidEnter(){
+    this.getdata()
   }
   // presentLoadingDefault() {
   //   loading = this.loadingCtrl.create({
@@ -57,8 +55,17 @@ export class AboutPage {
   //    loading.present();
      
   //  }
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'خطأ',
+      subTitle: ' لا يوجد اتصال ',
+      buttons: ['اغلاق']
+    });
+    alert.present();
+  }
   call(mobile)
   {
+    // alert(mobile)
     this.callNumber.callNumber(mobile, true).then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
   }
@@ -86,17 +93,35 @@ openModal(x) {
     getdata()
     {
       let loading = this.loadingCtrl.create({
-        content: 'Please wait...'
+        content: 'جارى التحميل...'
       });
     
       loading.present();
       this.services.getallbranches().then(data => { 
         this.items=data;
-         // alert(JSON.stringify( this.items))
-         })
-      setTimeout(() => {
-        loading.dismiss();
-      }, 1500);
+        // alert(JSON.stringify( this.items))
+        // this.items.forEach(category => {
+        //   // if(category.numbers != null){
+        //     this.arraynumber=category.numbers
+        //     // category.numbers.forEach(number => {
+        //     //   console.log(number);
+              
+        //     //    this.arraynumber=number.number;
+        //       console.log("fgggggggggggggggggg"+JSON.stringify( this.arraynumber));
+        //     // });
+        //   // }
+        // });
+
+   
+          loading.dismiss();
+     
+         }).catch(err => {
+          setTimeout(() => {
+            loading.dismiss();
+          }, 1000);
+          this.showAlert()
+        })
+     
     
      
         

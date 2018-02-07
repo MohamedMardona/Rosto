@@ -17,31 +17,58 @@ import { ServicesProvider } from '../../providers/services/services';
 export class BranchesPage {
 s
 items
+array:any=[]
 mobile
+numarray=[];
   constructor(public loadingCtrl: LoadingController,private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public services:ServicesProvider) {
-    this.getdata();
+    // this.getdata();
     // alert(JSON.stringify(this.navParams.get('comarray')) )
+    this.mobile=[];
+    this.array=[]
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BranchesPage');
+  ionViewDidEnter(){
+    this.getdata()
+    this.mobile=[];
+    this.array=[]
+   
   }
   getdata()
   {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'جارى التحميل...'
     });
   
     loading.present();
-    this.services.getbranches().then(data => { 
+    this.services.getallbranches().then(data => { 
       this.items=data;
-       // alert(JSON.stringify( this.items))
-       })
-    setTimeout(() => {
-      loading.dismiss();
-    }, 1500);
-  
+      // alert("gggggg"+JSON.stringify(this.items[0].numbers[0].number) )
+      this.items.forEach(branch => {
+      // alert("fgfgfgfgf"+JSON.stringify(branch.numbers[0].number) )
+      this.numarray=branch.numbers;
+     
+      //  this.numarray=category.numbers;
+      })
+      
+        loading.dismiss();
+      
+    
+       }).catch(err => {
+        setTimeout(() => {
+          loading.dismiss();
+        }, 1000);
+      this.showAlert();
+      })
+    
  
+  }
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'تنبيه',
+      subTitle: ' خطأ ',
+      buttons: ['OK']
+    });
+    alert.present();
   }
   saveSettings(s)
   {
@@ -55,8 +82,21 @@ this.s=s
   }
   goo(mobile)
   {
-    // alert(s)
-   this.mobile=mobile
+    // alert(JSON.stringify(mobile) )
+    // for (const iterator of mobile) {
+
+
+      mobile.forEach(element => {
+      // alert(element.number)
+      this.array.push(element.number)
+    });
+   
+      
+  //   // }
+  //   // alert( this.array)
+  this.mobile=this.array
+
+  // alert(JSON.stringify(this.mobile))
   }
   // changeStatus(s)
   // {
@@ -68,7 +108,7 @@ this.s=s
     
     
   //   // window.location.reload();
-    
+  // keytool -genkey -v -keystore Rosto.keystore -alias Rosto -keyalg RSA -keysize 2048 -validity 10000
     
     
   // }
@@ -76,14 +116,15 @@ this.s=s
     let alert = this.alertCtrl.create({
       title: 'خطأ',
       subTitle: 'من فضلك اختر الفرع',
-      buttons: ['Dismiss']
+      buttons: ['اغلاق']
     });
     alert.present();
   }
   go()
     {
+        // alert(this.mobile)
     
-if(this.s==undefined)
+if(this.mobile == '' )
 {
   this.presentAlert() 
 }
