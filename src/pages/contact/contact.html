@@ -1,17 +1,64 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    
+      <ion-navbar color="main" class="img_ctegory" >
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+          <!-- <ion-buttons right>
+              <button ion-button icon-only (click)="back()">
+                  <ion-icon name="arrow-back"></ion-icon>
+              </button>
+          </ion-buttons> -->
+          <!-- <span [hidden]="appear" (click)="gohome()" class="count-category"> اضافه اخرى</span>  -->
+        <ion-title>
+          <img src="assets/imgs/logo.png"  alt="logo" style="box-shadow: none; border-radius: 0!important">
+          <ion-icon class="cart-category" (click)="submit()" [hidden]="appear"  name="cart"></ion-icon>
+       <span [hidden]="appear" class="count-category"> {{ordercount}} </span> 
+        
+        </ion-title>
+        <!-- <button (click)="submit()" [hidden]="appear" ion-button color="main">إنهاء الطلب</button> -->
+      </ion-navbar>
+    
+    </ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let item of items" (click)="openModal(item)">
+            <ion-list>
+                <ion-item>
+                  <ion-thumbnail item-start>
+                      <img style="width: 55px;
+                      height: 55px;" src="{{item.image}}"  alt="soup_item">
+                  </ion-thumbnail>
+                  
+                 
+                  <h2>{{item.name}}</h2>
+                  <!-- <p>{{item.desc}}</p> -->
+                  
+                  <span *ngIf="item.price_sm != null" style="background-color: rgb(255, 217, 146); padding: 3px; border-radius: 2px; color: #fff; font-size: 10px; margin-top: 10px; font-weight: 600">S - {{item.price_sm}} LE</span>&nbsp;
+                  <span *ngIf="item.price_md != null" style="background-color: rgb(255, 197, 88); ; padding: 3px; border-radius: 2px; color: #fff; font-size: 10px; margin-top: 10px; font-weight: 600">M - {{item.price_md}} LE</span>&nbsp;
+                  <span *ngIf="item.price_lg != null" style="background-color: orange; ; padding: 3px; border-radius: 2px; color: #fff; font-size: 10px; margin-top: 10px; font-weight: 600">L - {{item.price_lg}} LE</span>&nbsp;
+               
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <!-- <ion-card ion-item *ngFor="let item of items" (click)="openModal(item)"> -->
+           
+                  <!-- <ion-item> -->
+                    <!-- <ion-avatar item-start>
+                      <img src="img/marty-avatar.png">
+                    </ion-avatar> -->
+                    <!-- <h2>{{item.name}}</h2> -->
+                    <!-- <p>November 5, 1955</p> -->
+                  <!-- </ion-item> -->
+                
+                  <!-- <img src="{{item.img}}">
+                
+                  <ion-card-content>
+                    <h2>السعر:{{item.price}}</h2>
+
+                    <p>{{item.des}}</p>
+                  </ion-card-content>
+        </ion-card> -->
+      </ion-list>
+   
+  <!-- <button (click)="submit()">submit</button> -->
 </ion-content>

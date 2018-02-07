@@ -40,13 +40,13 @@
     
     <ion-content padding>
         <ion-card>
-            <img src="{{catedata.img}}" height="200" width="100%">
+            <img src="{{catedata.image}}" height="200" width="100%">
             <ion-card-content>
               <ion-card-title>
                   {{catedata.name}}
               </ion-card-title>
               <p>
-                 {{catedata.des}}     
+                 {{catedata.desc}}     
                          </p>
             </ion-card-content>
             <ul class="adding">
@@ -58,13 +58,14 @@
                   <ion-icon name="remove"></ion-icon>
               </button>
             </ul>
-         
+            <!-- *ngIf="catedata.minprice != null" selected value="small" -->
+            <!-- ;then selected -->
             <ion-item>
               <ion-label>الحجم</ion-label>
               <ion-select [(ngModel)]="size" (ionChange)="onSelectChange($event)">
-                <ion-option selected value="small">صغير</ion-option>
-                <ion-option value="medium">متوسط</ion-option>
-                <ion-option value="large">كبير</ion-option>
+                <ion-option  *ngIf="catedata.price_sm != null"  value="{{catedata.price_sm}}"    >صغير</ion-option>
+                <ion-option *ngIf="catedata.price_md != null" value="{{catedata.price_md}}">متوسط</ion-option>
+                <ion-option *ngIf="catedata.price_lg != null"value="{{catedata.price_lg}}">كبير</ion-option>
               </ion-select>
             </ion-item>
     

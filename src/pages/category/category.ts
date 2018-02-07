@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalOptions,Modal,IonicPage, NavController, NavParams,ModalController,App,LoadingController } from 'ionic-angular';
+import {AlertController, ModalOptions,Modal,IonicPage, NavController, NavParams,ModalController,App,LoadingController,Platform } from 'ionic-angular';
 import { ServicesProvider } from '../../providers/services/services';
 import { Storage } from '@ionic/storage';
 import {TabsPage } from '../tabs/tabs';
@@ -20,48 +20,64 @@ import {TabsPage } from '../tabs/tabs';
 export class CategoryPage {
 items
 array
-alldata=[];
+alldata:any=[];
  myModal
  ordercount=0;
  appear=true;
-  constructor(public loadingCtrl: LoadingController,public app:App,private modal: ModalController,public navCtrl: NavController, public navParams: NavParams,public services:ServicesProvider,public storage:Storage) {
-    this.getdata()
+ cateid
+  constructor(public alert:AlertController,public platform:Platform,public loadingCtrl: LoadingController,public app:App,private modal: ModalController,public navCtrl: NavController, public navParams: NavParams,public services:ServicesProvider,public storage:Storage) {
+  
+    platform.ready().then(() => {
+      // this.ordercount=this.navParams.get('counts');
+      // this.alldata=this.navParams.get('orders');
+      if(this.navParams.get('orders') == ''   )
+      {
+      this.appear=true
+
+      }
+    })
+    this.cateid=this.navParams.get('id');
+    // this.getdata(this.cateid)
    
     // console.log('ionViewDidLoad CategoryPage');
-
-    console.log("categoryconstractor",this.navParams.get('orders'))
-    console.log("modelconstractor",this.navParams.get('orders'))
+   
+    
+    // ['__zone_symbol__value'][0]
+    // alert(this.cateid)
+  //  alert("zdfdfefyeyreyryeryyr"+JSON.stringify(this.ordercount) )
+    // 
+    // console.log("categoryconstractor",this.navParams.get('orders'))
+    // console.log("modelconstractor",this.navParams.get('orders'))
+    // if(  this.ordercount!=0 )
+    // {
 if(this.navParams.get('orders') != ''   )
 {
+  // alert("data")
   this.appear=false;
   this.alldata=this.navParams.get('orders');
   this.ordercount=this.navParams.get('counts');
-  // alert("alldtataconstar"+ JSON.stringify(this.alldata))
+// alert("ordercount"+ JSON.stringify( this.ordercount))
   
 }
 else{
+  // alert("data2")
   this.appear=true
+   this.ordercount=0
 }
+    // }
   }
+  ionViewDidEnter(){
+    this.getdata(this.cateid)
 
-  ionViewDidLoad() {
-    // alert("view")
-    
-    // alert("1")
-    // this.storage.get('products').then((val) => { 
-    //   console.log(JSON.stringify(val)  + " = previous value"); // 5
-    //   if(val != null)
-    //   {
-    //     this.array=val; 
-    //   }
-    //   // 6
-    // });
-    // alert(JSON.stringify(this.alldata))
   }
+  // ionViewDidLoad(){
+  //   this.getdata(this.cateid)
+  //   // this.initMap();
+   
+  // }
   back()
   {
-    // alert("category"+JSON.stringify(this.alldata))
-    // alert("categorycount"+JSON.stringify(this.ordercount))
+    
     this.storage.set('count', this.ordercount);
     this.storage.set('products', this.alldata);
 
@@ -70,8 +86,17 @@ else{
           //this.app.getRootNav().setRoot(TabsPage);
 
   }
+  showAlert() {
+    let alert = this.alert.create({
+      title: 'خطأ',
+      subTitle: ' لا يوجد اتصال ',
+      buttons: ['اغلاق']
+    });
+    alert.present();
+  }
   openModal(x) {
-    
+    // this.storage.set('count', this.ordercount);
+    // alert("xxxxxxx open "+JSON.stringify(x))
         const myModalOptions: ModalOptions = {
           enableBackdropDismiss: false
         };
@@ -81,17 +106,18 @@ else{
         //   occupation: 'Developer'
         // };
     
-         this.myModal=this.modal.create('ModalPage', { data:  x }, myModalOptions);
+         this.myModal=this.modal.create('ModalPage', { data:  x,id: this.cateid }, myModalOptions);
     
          this.myModal.present();
     
          this.myModal.onDidDismiss((data) => {
           //  alert(count)
-            this.ordercount+=1;
+            // this.ordercount+=1;
+            // this.storage.set('count', this.ordercount);
         //  var x= this.storage.get('count')
         //  alert("xx"+ x)
           console.log("I have dismissed."+ JSON.stringify(data) );
-          this.alldata.push(data)
+          // this.alldata.push(data)
 
           // alert(data)
           // alert(this.alldata )'
@@ -99,6 +125,12 @@ else{
           if(  data == undefined)
           {
             this.appear=true
+            this.alldata= this.alldata;
+            if(this.alldata != '')
+            {
+              // this.alldata.push(data)
+              this.appear=false;
+            }
           //  alert(this.appear)
           }
           // if(this.alldata == [] )
@@ -107,7 +139,11 @@ else{
           //   alert(this.appear)
           // }
           else{
+            this.ordercount+=1;
+            this.alldata.push(data)
             this.appear=false;
+          // alert("1"+this.appear)
+            // this.appear=false;
           // alert("1"+this.appear)
             
           }
@@ -129,21 +165,26 @@ else{
         });
     
       }
-  getdata()
+  getdata(id)
   {
-  
+  // alert("rrrr"+id)
       let loading = this.loadingCtrl.create({
-        content: 'Please wait...'
+        content: 'جارى التحميل...'
       });
     
       loading.present();
-      this.services.getcate().then(data => { 
+      this.services.getcate(id).then(data => { 
         this.items=data;
-         // alert(JSON.stringify( this.items))
-         })
-      setTimeout(() => {
+        // alert(J  loading.dismiss();SON.stringify(data))
         loading.dismiss();
-      }, 1500);
+         }).catch(err => {
+          setTimeout(() => {
+            loading.dismiss();
+          }, 1000);
+
+          this.showAlert()
+        })
+    
   }
   submit()
   {
@@ -153,9 +194,9 @@ else{
       this.array=element
       this.storage.set('products', this.alldata);
     });
-
+  // alert(JSON.stringify(this.alldata))
   this.navCtrl.push("BranchesPage")
-//  this.storage.set('products', this.alldata);
+  // this.storage.set('products', this.alldata);
     
     // this.alldata=this.storage.get('products'); // 4
     // this.storage.get('products').then((val) => { // 1

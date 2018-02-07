@@ -1,22 +1,31 @@
 <ion-header>
-    <ion-navbar color="main">
+    <ion-navbar color="main" >
+        <ion-buttons right class="img_ctegory" [hidden]="appear">
+            <button ion-button icon-only (click)="clear()">
+                <ion-icon name="trash"></ion-icon>
+                <!-- <ion-icon name="arrow-back"></ion-icon> -->
+            </button>
+        </ion-buttons>
+        
+
       <ion-title>
         <img src="assets/imgs/logo.png"    alt="logo">
       </ion-title>
     </ion-navbar>
   </ion-header>
-
+  <!-- http://kapp.be4em.com/rosto/images/ -->
 <ion-content padding>
     <ion-list >
-      <ion-item *ngFor="let item of items"  (click)="itemSelected(item)"> 
+      <ion-item *ngFor="let item of items"  (click)="itemSelected(item.id)"> 
         <ion-avatar item-start>
-            <img src="{{item.img}}">
+            <img src="{{item.image}}">
+         
         </ion-avatar>
         <h2>  {{ item.name }}</h2>
         <button ion-button clear item-end>
             <ion-icon name="arrow-dropleft"></ion-icon> 
         </button>
-        <p>جميع المشروبات الساخنة والباردة</p>
+        <p  style="word-break: break-all">{{ item.desc }}</p>
       </ion-item>
     </ion-list>
     <!-- <ion-list no-lines >

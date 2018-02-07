@@ -1,4 +1,6 @@
 import { Component,ViewChild ,ElementRef  } from '@angular/core';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 
 import { IonicPage, NavController, NavParams ,ViewController,LoadingController} from 'ionic-angular';
 import {
@@ -35,18 +37,34 @@ export class MapmodalPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  constructor(public loadingCtrl: LoadingController,private view: ViewController,private navParams: NavParams,public navCtrl: NavController,public nativeGeocoder: NativeGeocoder) {
+  constructor(private openNativeSettings: OpenNativeSettings,private diagnostic: Diagnostic,public loadingCtrl: LoadingController,private view: ViewController,private navParams: NavParams,public navCtrl: NavController,public nativeGeocoder: NativeGeocoder) {
     // this.lat=30.0444196,
-    
+  
     // this.lng=31.23571160000006
+ 
       }
       
       ionViewDidLoad(){
         this.catedata = this.navParams.get('data');
-        
-      // alert(JSON.stringify(this.catedata))
-        this.initMap(this.catedata.lat,this.catedata.lng);
+        this.diagnostic.isLocationEnabled().then(data => { 
+          // alert("Location setting is " + (data ? "enabled" : "disabled"));
+          if(data==true)  this.initMap(this.catedata.lat,this.catedata.lng);
+       else    {
+        this.openNativeSettings.open("location").then(data => { 
+          this.view.dismiss();   
+// alert(data)
+        }).catch(err => {
+          this.view.dismiss();   
+          // alert(err)
+         })
+
+       }
+             }).catch(err => {
+      alert(err)
+             })
+    //  alert(JSON.stringify(this.catedata))
        
+    // window.cordova.plugins.settings.open("wifi", function() {
       }
   initMap(lat,lng) {
     // alert(lat)

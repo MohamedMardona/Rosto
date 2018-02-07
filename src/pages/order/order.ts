@@ -22,43 +22,40 @@ export class OrderPage {
   element=[];
   items=[]
   total=0
-  mob
+  mob=[]
+  mobarray=[]
   constructor(public callnumber:CallNumber,public alertCtrl:AlertController,public appCtrl: App,public navCtrl: NavController, public navParams: NavParams,public storage:Storage,public platform: Platform) {
-    // this.presentConfirm()
-    // platform.registerBackButtonAction(() => {
-    // // your check here
-
-    //  alert("!")
-         
-    //     this.presentConfirm()
-        
-      
-      
-    // }, 100);
-
- 
    
-     
-    // let backAction =  platform.registerBackButtonAction(() => {
-    //   alert("second");
-    //   this.appCtrl.getRootNav().setRoot(TabsPage);
-    //   backAction();
-    // },2)
     this.branche=this.navParams.get("branch")
     this.mob=this.navParams.get("mob")
-    // alert(this.branche)
+    // this.mob.forEach(element => {
+      
+    // });
+    this.mobarray= this.mob
+
+  // alert(JSON.stringify(  this.mobarray) )
        // alert(JSON.stringify(this.alldata[0]['__zone_symbol__value'][0].id))
 
     this.storage.get('products').then((val) => { 
-      console.log(JSON.stringify(val))
+      // console.log("hjhjhjhgjhGGGG"+JSON.stringify(val))
       for (var index = 0; index < val.length; index++) {
         this.total+=val[index]['__zone_symbol__value'][0].totalprice
         this.element .push(val[index]['__zone_symbol__value'][0]);
         console.log('   this.element',JSON.stringify(  this.element))
         // this.totalorice=
       }
-      this.items= this.element 
 
+      // this.storage.get('products').then((val) => { 
+      //   console.log(JSON.stringify(val))
+      //   for (var index = 0; index < val.length; index++) {
+      //     this.total+=val[index]['__zone_symbol__value'][0].totalprice
+      //     this.element .push(val[index]['__zone_symbol__value'][0]);
+      //     console.log('   this.element',JSON.stringify(  this.element))
+      //     // this.totalorice=
+      //   }
+
+      this.items= this.element 
+// alert(  this.items)
      
       console.log(' this.items',JSON.stringify(  this.items))
       // val.forEach(element => {
@@ -74,10 +71,10 @@ export class OrderPage {
     
   
   }
-  call()
+  call(mob)
   {
-    // alert(this.mob)
-    this.callnumber.callNumber(this.mob, true).then(() => console.log('Launched dialer!'))
+  //  alert(mob)
+    this.callnumber.callNumber(mob, true).then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
   }
   presentConfirm() {
@@ -115,7 +112,7 @@ export class OrderPage {
   End()
   {
     this.storage.set('products',[])
-    this.storage.set('counts',0)
+    this.storage.set('count',0)
     // this.navCtrl.setRoot(HomePage)
     this.appCtrl.getRootNav().setRoot(TabsPage);
     

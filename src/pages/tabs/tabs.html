@@ -1,5 +1,16 @@
-<ion-tabs  selectedIndex ='0'>
-  <ion-tab [root]="tab1Root" tabTitle="المنيو" tabIcon="paper"></ion-tab>
+<ion-tabs (ionChange)="transition($event)"   [selectedIndex] ='tabIndex'  >
+  
+  <ion-tab [root]="tab1Root" tabTitle="المنيو"  tabIcon="paper"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="الفروع" tabIcon="flag"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="العروض" tabIcon="basket"></ion-tab>
 </ion-tabs>
+<!-- <super-tabs>
+  <super-tab [root]="tab1Root" title="First page" icon="home"></super-tab>
+  <super-tab [root]="tab2Root" title="Second page" icon="pin"></super-tab>
+  <super-tab [root]="tab3Root" title="Third page" icon="heart"></super-tab>
+</super-tabs> -->
+
 <!-- tabsPlacement='top' -->
+
+<!-- selectedIndex ='0' -->
+<!-- #myTabs (ionChange)="myMethod()"  -->
